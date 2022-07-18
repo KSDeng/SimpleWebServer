@@ -1,12 +1,6 @@
-# Fresh Guy Entry Task
+# Simple Web Server
 
 Deng Kaisheng
-
-
-
-## Requirements
-
-[guide](https://confluence.shopee.io/display/SPDEV/Fresh+Guy+Entry+Task)
 
 
 
@@ -37,17 +31,11 @@ Deng Kaisheng
 
 ### overall architecture
 
-![](https://git.garena.com/kaisheng.deng/entrytask/-/raw/master/image-20220520151941199.png)
+![](https://github.com/KSDeng/SimpleWebServer/blob/main/image-20220520151941199.png?raw=true)
 
 
 
 ### database schema 
-
-The design of the database table is according to the following guide,
-
-[MySQL Database Design Guide](https://confluence.shopee.io/display/LABS/MySQL+Database+Design+Guide)
-
-
 
 There are 4 fields in total, with `id bigint unsigned` as primary key.
 
