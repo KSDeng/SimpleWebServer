@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>User Info</title>
+</head>
+<body>
+<h1>{{printf "%s" .Nickname}}</h1>
+<p>[<a href="/editName/{{.Nickname}}/{{.SessionId}}">edit nickname</a>]</p>
+<img width="100px" src="data:image/jpg;base64,{{.Image}}">
+<p>[<a href="/edit/{{.Nickname}}/{{.SessionId}}">edit photo</a>]</p>
+<form action="/logout/" method="GET">
+    <div><input type="submit" value="Logout"></div>
+</form>
+</body>
