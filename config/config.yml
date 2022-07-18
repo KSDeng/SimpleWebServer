@@ -1,24 +1,24 @@
 webserver:
-  host: "localhost"
+  host: "0.0.0.0"
   port: 8080
 
 tcpserver:
-  host: "localhost"
+  host: "0.0.0.0"
   protocol: "tcp"
   port: 3333
 
 database:
   db_user: "root"
-  db_password: ""
+  db_password: "MYsqldks8991*"
   db_name: "user_info_db"
   db_net: "tcp"
-  db_addr: "127.0.0.1:3306"
+  db_addr: "0.0.0.0:3306"
   db_driver: "mysql"
   db_max_conn: 30
   db_max_idle_conn: 5
 
 redis:
-  host: "localhost"
+  host: "0.0.0.0"
   port: 6379
   password: ""
   db: 0

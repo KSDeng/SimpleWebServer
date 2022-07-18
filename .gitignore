@@ -1,3 +1,4 @@
 .idea/**
 **/*.rdb
 webserver/temp-images
+config/config.yml
