@@ -10,7 +10,7 @@ tcpserver:
 database:
   db_user: "root"
   db_password: ""
-  db_name: "users"
+  db_name: "user_info_db"
   db_net: "tcp"
   db_addr: "127.0.0.1:3306"
   db_driver: "mysql"
