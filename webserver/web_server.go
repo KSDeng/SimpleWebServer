@@ -55,7 +55,7 @@ func checkAndStartRedisServer() {
 		go func() {
 			err := cmd_start.Run()
 			if err != nil {
-				panic(err)
+				fmt.Println(err)
 			}
 		}()
 	}
@@ -64,12 +64,12 @@ func checkAndStartRedisServer() {
 func sendPacketBySocket(p packet.Packet) {
 	framePayload, err := packet.Encode(p)
 	if err != nil {
-		panic(err)
+		fmt.Println(err)
 	}
 	fmt.Printf("send frame length = %d\n", len(framePayload)+4)
 	err = frameCodec.Encode(conn, framePayload)
 	if err != nil {
-		panic(err)
+		fmt.Println(err)
 	}
 }
 
@@ -140,7 +140,7 @@ func loginHandler(w http.ResponseWriter, r *http.Request) {
 		// handle ack, read from the connection
 		ackFramePayload, err := frameCodec.Decode(conn)
 		if err != nil {
-			panic(err)
+			fmt.Println(err)
 		}
 
 		p, err := packet.Decode(ackFramePayload)
@@ -148,7 +148,7 @@ func loginHandler(w http.ResponseWriter, r *http.Request) {
 		ack, ok := p.(*packet.LoginRequestAck)
 
 		if !ok {
-			panic("not ack")
+			fmt.Println("not ack")
 		}
 		fmt.Println("the result of login request is", ack)
 		if ack.ID == id {
@@ -230,7 +230,7 @@ func uploadHandler(w http.ResponseWriter, r *http.Request) {
 		// handle ack, read from the connection
 		ackFramePayload, err := frameCodec.Decode(conn)
 		if err != nil {
-			panic(err)
+			fmt.Println(err)
 		}
 
 		p, err := packet.Decode(ackFramePayload)
@@ -238,14 +238,14 @@ func uploadHandler(w http.ResponseWriter, r *http.Request) {
 		ack, ok := p.(*packet.UpdatePhotoPathAck)
 
 		if !ok {
-			panic("not ack")
+			fmt.Println("not ack")
 		}
 		fmt.Println("the result of login request is", ack)
 		if ack.ID == id {
 			if ack.PacketBody.Succeed {
 				break
 			} else {
-				panic("Update photo path failed.")
+				fmt.Println("Update photo path failed")
 			}
 		}
 	}
@@ -295,7 +295,7 @@ func displayHandler(w http.ResponseWriter, r *http.Request) {
 		// handle ack, read from the connection
 		ackFramePayload, err := frameCodec.Decode(conn)
 		if err != nil {
-			panic(err)
+			fmt.Println(err)
 		}
 
 		p, err := packet.Decode(ackFramePayload)
@@ -303,7 +303,7 @@ func displayHandler(w http.ResponseWriter, r *http.Request) {
 		ack, ok := p.(*packet.GetUserDataAck)
 
 		if !ok {
-			panic("not ack")
+			fmt.Println("not ack")
 		}
 		fmt.Println("the result of login request is", ack)
 		if ack.ID == id {
@@ -377,7 +377,7 @@ func saveNicknameHandler(w http.ResponseWriter, r *http.Request) {
 		// handle ack, read from the connection
 		ackFramePayload, err := frameCodec.Decode(conn)
 		if err != nil {
-			panic(err)
+			fmt.Println("not ack")
 		}
 
 		p, err := packet.Decode(ackFramePayload)
@@ -385,7 +385,7 @@ func saveNicknameHandler(w http.ResponseWriter, r *http.Request) {
 		ack, ok := p.(*packet.UpdateNicknameAck)
 
 		if !ok {
-			panic("not ack")
+			fmt.Println("not ack")
 		}
 
 		if ack.ID == id {

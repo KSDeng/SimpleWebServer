@@ -176,7 +176,7 @@ func handlePacket(framePayload []byte) (ackFramePayload []byte, err error) {
 
 			userId, err := strconv.Atoi(sessionId)
 			if err != nil {
-				panic(err)
+				fmt.Println(err)
 			}
 			err = db.UpdatePhotoPathById(int64(userId), updateRequest.PacketBody.PhotoPath)
 
@@ -203,7 +203,7 @@ func handlePacket(framePayload []byte) (ackFramePayload []byte, err error) {
 			sessionId := getUserDataReq.PacketBody.SessionId
 			userId, err := strconv.Atoi(sessionId)
 			if err != nil {
-				panic(err)
+				fmt.Println(err)
 			}
 
 			photoPath, _ := db.PhotoPathById(int64(userId))
@@ -232,7 +232,7 @@ func handlePacket(framePayload []byte) (ackFramePayload []byte, err error) {
 			fmt.Printf("Updating nickname, session id: %s\n", sessionId)
 			userId, err := strconv.Atoi(sessionId)
 			if err != nil {
-				panic(err)
+				fmt.Println(err)
 			}
 
 			err = db.UpdateNicknameById(int64(userId), newNickname)
